@@ -1,0 +1,396 @@
+/* General Styles */
+body {
+    background-color: #f3f4f6;
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+  }
+  
+  /* Admin Panel */
+  .admin-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+    padding: 2rem;
+  }
+  
+  .admin-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #374151;
+  }
+  
+  .select-box {
+    padding: 0.75rem;
+    border: 1px solid #d1d5db;
+    border-radius: 0.5rem;
+    width: 16rem;
+    background-color: white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .admin-button {
+    padding: 0.75rem 1.5rem;
+    background-color: #2563eb;
+    color: white;
+    font-weight: bold;
+    border-radius: 0.5rem;
+    transition: background-color 0.2s ease-in-out;
+  }
+  
+  .admin-button:hover {
+    background-color: #1e40af;
+  }
+  
+  /* Bus Layout Container */
+.bus-layout-container {
+  position: relative;
+  max-width: 1200px; /* Increased from 800px */
+  margin: 40px auto; /* More vertical spacing */
+  padding: 80px 30px 40px; /* Increased padding */
+  background-color: #f8fafc;
+  border-radius: 15px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+}
+
+/* Header Section */
+.bus-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 40px; /* Added spacing below header */
+  padding: 0 20px;
+}
+
+.bus-number {
+  font-size: 1.5rem; /* Larger text */
+  font-weight: 700;
+  color: #1e293b;
+  display: block;
+  margin: 0 auto;
+  width: fit-content;
+}
+  
+  /* Entrance and Driver Indicators */
+  .entrance-door {
+    position: absolute;
+    top: 65px;
+    left: 30px;
+    background: #2d3748;
+    color: white;
+    padding: 8px 10px;
+    border-radius: 5px;
+    font-size: 0.9rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    margin: 15px 0; /* Added vertical margin */
+  }
+  
+  .driver-seat {
+    position: absolute;
+    top: 65px;
+    right: 35px;
+    background: #2d3748;
+    color: white;
+    padding: 8px 20px;
+    border-radius: 5px;
+    font-size: 0.9rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    margin: 15px 0; /* Added vertical margin */
+  }
+  
+  /* Seat Layout Grid */
+  .bus-seat-layout {
+    display: grid;
+    grid-template-columns: 
+      100px   /* First column (A1, B1...) */
+      40px    /* Aisle */
+      100px 100px;  /* Second and third columns (A2, B2...) */
+    gap: 15px;
+    margin: 20px 0;
+  }
+
+  /* Seat Groups */
+.seat-group {
+    display: contents;
+  }
+  
+  /* Seat Positioning */
+  .single {
+    grid-column: 1;
+  }
+
+  /* Row Containers */
+.bus-row {
+    display: contents;
+  }
+
+  .double-seat-group {
+    display: grid;
+    gap: 15px;
+    grid-template-columns: 1fr 1fr;
+  }
+  
+  /* Seat Styles */
+  .seat {
+    width: 100px !important;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 6px;
+    font-weight: 500;
+  }
+  
+  .single {
+    width: 80px;
+    grid-column: 1;
+  }
+  
+  .double {
+    width: 120px;
+    grid-column: span 2;
+  }
+  
+  /* Aisle Design */
+  .aisle {
+    background: repeating-linear-gradient(
+      45deg,
+      #f1f5f9,
+      #f1f5f9 10px,
+      #cbd5e1 10px,
+      #cbd5e1 20px
+    );
+    margin: 0 -10px; /* Fill gap between columns */
+    z-index: 1; /* Ensure aisle appears between seats */
+  }
+
+.double {
+  grid-column: 3 / span 2;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+  
+  /* Seat Status Colors */
+  .seat.available {
+    background-color: #86efac;
+    border-color: #4ade80;
+  }
+  
+  .seat.booked {
+    background-color: #9ca3af;
+    color: white;
+    cursor: not-allowed;
+    opacity: 0.8;
+  }
+  
+  .seat.admin-booked {
+    background: linear-gradient(135deg, #b91c1c, #7f1d1d);
+    color: white;
+    border-color: #7f1d1d;
+    cursor: pointer;
+  }
+  
+  /* Admin Indicator */
+  .admin-indicator {
+    position: absolute;
+    top: 3px;
+    right: 3px;
+    background: #dc2626;
+    color: white;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* Hover Effects */
+  .seat.available:hover {
+    transform: scale(1.05);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  }
+  
+  .seat.admin-booked:hover {
+    background: linear-gradient(135deg, #991b1b, #6b1c1c);
+  }
+  
+  /* Booking Form Styles */
+  .booking-form-inline {
+    margin-top: 30px;
+    padding: 20px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .booking-form-inline h2 {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+    color: #374151;
+  }
+  
+  .booking-form-inline .input-box,
+  .booking-form-inline .select-box {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid #d1d5db;
+    border-radius: 0.5rem;
+    margin-bottom: 1rem;
+    background-color: white;
+  }
+  
+  .booking-form-inline .button-group {
+    display: flex;
+    gap: 1rem;
+    justify-content: flex-end;
+  }
+  
+  .booking-form-inline .book-button,
+  .booking-form-inline .cancel-button {
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.5rem;
+    border: none;
+    /* font-weight: bold; */
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
+    display: inline-block;
+    margin: 0 auto;
+    width: fit-content;
+  }
+  
+  .booking-form-inline .book-button {
+    background-color: #2563eb;
+    color: white;
+  }
+  
+  .booking-form-inline .book-button:hover {
+    background-color: #1e40af;
+  }
+  
+  .booking-form-inline .cancel-button {
+    background-color: #6b7280;
+    color: white;
+  }
+  
+  .booking-form-inline .cancel-button:hover {
+    background-color: #4b5563;
+  }
+  
+  /* Back Button */
+  .back-button {
+    display: block; /* Change to block-level element */
+    margin: 25px auto 0; /* Top margin 25px, auto horizontal margins */
+    padding: 15px 25px;
+    background-color: #3b82f6;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    width: fit-content; /* Keep button width based on content */
+}
+  
+  .back-button:hover {
+    background-color: #2563eb;
+  }
+  
+  /* Admin Modal Styles */
+  .admin-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+  }
+  
+  .admin-modal-content {
+    background: white;
+    padding: 25px;
+    border-radius: 10px;
+    min-width: 320px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  }
+  
+  .admin-modal-content h2 {
+    margin-bottom: 15px;
+    color: #1e293b;
+  }
+  
+  .admin-modal-buttons {
+    margin-top: 20px;
+    display: flex;
+    gap: 12px;
+    justify-content: flex-end;
+  }
+  
+  .admin-cancel-button {
+    background-color: #dc2626;
+    color: white;
+    padding: 8px 16px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .admin-close-button {
+    background-color: #64748b;
+    color: white;
+    padding: 8px 16px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+  }
+
+  
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .bus-seat-layout {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  
+    .modal-content {
+      width: 18rem;
+    }
+  }
+  
+  .role-switch {
+    margin-top: 1rem;
+    padding: 0.5rem 1rem;
+    background-color: #4b5563;
+    color: white;
+    border-radius: 0.25rem;
+    cursor: pointer;
+  }
+
+
+/* Logo Styles */
+.selise-logo {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    z-index: 10000;
+    width: 40px; /* Adjust based on your logo size */
+    height: 40px;
+    background: url('SELISE.jpeg') no-repeat center;
+    background-size: contain;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+  }
+  
+  .selise-logo:hover {
+    transform: scale(1.05);
+  }
+
